@@ -1,0 +1,104 @@
+<div id="main-wrapper">
+    <header class="topbar">
+        <nav class="navbar top-navbar navbar-expand-md navbar-light">
+            <div class="navbar-header">
+                <a class="navbar-brand" routerLink='/principal'>
+                    <!-- Logo icon -->
+                    <b>
+                        <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                        <!-- Dark Logo icon -->
+                        <img src="../assets/images/yacht-club-logo.png" width="30px" alt="homepage" class="dark-logo" />
+                        <!-- Light Logo icon -->
+                        <img src="../assets/images/yacht-club-logo.png" width="30px" alt="homepage" class="light-logo" />
+                    </b>
+                    <!--End Logo icon -->
+                    <!-- Logo text -->
+                    <span>
+                     <!-- dark Logo text -->
+                     <img src="../assets/images/yatch-logo-blanco.png" alt="homepage" class="dark-logo" />
+                     <!-- Light Logo text -->    
+                     <img src="../assets/images/yatch-text.png" class="light-logo" alt="homepage" /></span> </a>
+            </div>
+            <div class="navbar-collapse">
+                <ul class="navbar-nav mr-auto mt-md-0">
+
+                </ul>
+                <ul class="navbar-nav my-lg-0">
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="page-wrapper">
+        <div class="container-fluid ">
+            <div class="row">
+                <div *ngIf="loading" class="col-12 mt-5">
+                    <svg class="circular" viewBox="25 25 50 50">
+                        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+                </div>
+                <div class="col-md-3 col-sm-12 right">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Ingrese el número de Cédula o Pasaporte del Socio</h3>
+                            <input [(ngModel)]="dni" type="text" name="dni" class="form-control">
+                            <button class="btn btn-info btn-block mt-3" (click)="buscarSocio()">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="socio" class="col-md-3 col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="text-info"><strong>Tipo:</strong> {{ socio.tipo.nombres }}</h4>
+                            <h5>{{ socio.nombres }} </h5>
+                            <span class="date">Identificación: {{ socio.dni }}</span>
+                            <button class="btn btn-secondary btn-block mt-3" (click)="realizarInvitar()">Invitar</button>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="invitado" class="col-md-6 col-sm-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="text-warning"><strong>Tipo:</strong> {{ invitado.tipo.nombres }}</h4>
+                            <h5>{{ invitado.nombres }} </h5>
+                            <span class="date mb-3">Identificación: {{ invitado.dni }}</span>
+                            <div *ngIf="invitado.invitaciones" class="alert alert-warning"> <i class="fa fa-warning"></i> El usuario ya posee una invitación realizada por el socio <strong>{{invitado.invitaciones.socio.nombres}}</strong> y caduca <strong>{{invitado.invitaciones.fecha_caducidad | amDateFormat: 'LL'}}</strong>
+                                <a (click)="editarInvitacion = true"> <i class="fa fa-pencil text-inverse m-l-5 m-r-10"></i> </a>
+                                <a (click)="deleteInvitacion(invitado.invitaciones.id_invitacion)"> <i class="fa fa-trash text-danger"></i> </a>
+                            </div>
+                            <dl-date-time-picker *ngIf="!invitado.invitaciones || editarInvitacion" startView="day" maxView="year" minView="day" [(ngModel)]="fechaCaducidad"></dl-date-time-picker>
+                            <button *ngIf="editarInvitacion" [disabled]="!fechaCaducidad" class="btn btn-secondary btn-block mt-3" (click)="gestionInvitado(invitado.invitaciones.id_invitacion)">Editar Invitación</button>
+                            <button *ngIf="!invitado.invitaciones && !editarInvitacion" [disabled]="!fechaCaducidad" class="btn btn-secondary btn-block mt-3" (click)="gestionInvitado()">Guardar Invitación</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer custom-footer"> © 2020 Salinas Yacht Club - Access Control.</footer>
+    </div>
+</div>
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Crear nuevo Invitado</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <form (ngSubmit)="createInvitado()" #form="ngForm">
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Cédula o Pasaporte</label>
+                <input [value]="user.dni" [(ngModel)]="user.dni" name="dni" class="form-control" type="text" required>
+            </div>
+            <div class="form-group">
+                <label>Nombre del Invitado</label>
+                <input [value]="user.nombres" [(ngModel)]="user.nombres" name="nombres" class="form-control" type="text" required>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button *ngIf="!requestServ.loading" [disabled]="!form.valid" type="submit" class="btn btn-outline-dark">
+                <span>Crear</span>
+            </button>
+            <i *ngIf="requestServ.loading" class="fa fa-spinner fa-spin fa-2x"></i>
+        </div>
+    </form>
+</ng-template>

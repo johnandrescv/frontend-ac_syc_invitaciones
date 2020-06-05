@@ -1,0 +1,77 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~open-iconic/font/css/open-iconic-bootstrap.css';
+a {
+    cursor: pointer;
+}
+
+.map-popup {
+    display: block;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 9px 16px rgba(58, 87, 135, 0.15);
+}
+
+.listing-content {
+    background: #fff;
+    padding: 25px 20px;
+    z-index: 20;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.listing-description-box {
+    float: left;
+    color: #666;
+    font-size: 13px;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.fl-wrap {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+.listing-title h4 {
+    float: left;
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+    color: #566985;
+    padding-bottom: 5px;
+    padding-right: 35px;
+}
+
+.map-popup-location-phone,
+.map-popup-location-info {
+    float: left;
+    color: #666;
+    font-size: 13px;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.map-popup-location-phone,
+.map-popup-location-info {
+    float: left;
+    color: #666;
+    font-size: 13px;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.map-popup-location-info i {
+    color: #012352;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 14px;
+}

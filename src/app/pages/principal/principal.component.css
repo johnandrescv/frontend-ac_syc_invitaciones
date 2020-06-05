@@ -1,0 +1,99 @@
+.map {
+    height: 80vh;
+}
+
+.no-padding {
+    padding: 0px;
+}
+
+.container-fluid {
+    padding: 0 0px 0px 0px !important;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.container-fluid {
+    margin: 0;
+    padding: 0;
+}
+
+.left,
+.right {
+    height: 80vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    text-align: center;
+}
+
+.left {
+    margin: 0;
+    height: 100%;
+    overflow: hidden
+}
+
+.topbar {
+    position: relative !important;
+}
+
+.row {
+    margin: 0px;
+}
+
+.card {
+    cursor: pointer;
+}
+
+
+/** SUSCRIPCION DE CORREO */
+
+.home-newsletter {
+    padding: 80px 0;
+    background: #153b94;
+}
+
+.home-newsletter .single {
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.home-newsletter .single h2 {
+    font-size: 22px;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+.home-newsletter .single .form-control {
+    height: 50px;
+    background: rgb(255, 255, 255);
+    border-color: transparent;
+    border-radius: 20px 0 0 20px;
+}
+
+.home-newsletter .single .form-control:focus {
+    box-shadow: none;
+    border-color: #243c4f;
+}
+
+.home-newsletter .single .btn {
+    min-height: 50px;
+    border-radius: 0 20px 20px 0;
+    background: #243c4f;
+    color: #fff;
+}
+
+.input-group {
+    padding-bottom: 20px;
+}
+
+.custom-footer {
+    left: 0px;
+}
