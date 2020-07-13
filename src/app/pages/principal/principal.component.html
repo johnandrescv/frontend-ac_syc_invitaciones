@@ -48,6 +48,11 @@
                 <div *ngIf="socio" class="col-md-3 col-sm-12">
                     <div class="card">
                         <div class="card-body">
+                            <div class="form-group d-flex justify-content-center mt-2" *ngIf="socio.imagen">
+                                <div class="image-preview">
+                                    <img class="img-fluid" [src]="socio.imagen" height="500" />
+                                </div>
+                            </div>
                             <h4 class="text-info"><strong>Tipo:</strong> {{ socio.tipo.nombres }}</h4>
                             <h5>{{ socio.nombres }} </h5>
                             <span class="date">Identificación: {{ socio.dni }}</span>
