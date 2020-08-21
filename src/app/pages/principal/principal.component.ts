@@ -19,6 +19,8 @@ export class PrincipalComponent implements OnInit {
   user = {
     dni: '',
     nombres: '',
+    correo: '',
+    edad: ''
   };
   fechaCaducidad: any;
   editarInvitacion = false;
@@ -143,6 +145,8 @@ export class PrincipalComponent implements OnInit {
     const body = new FormData();
     body.append('dni', this.user.dni);
     body.append('nombres', this.user.nombres);
+    body.append('edad', this.user.edad);
+    body.append('correo', this.user.correo);
     const response = await this.requestServ.createUser(body);
     if (response[0]) {
       this.invitado = response[1];

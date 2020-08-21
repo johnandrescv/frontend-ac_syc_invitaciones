@@ -54,10 +54,11 @@
                                 </div>
                             </div>
                             <h4 class="text-info"><strong>Tipo:</strong> {{ socio.tipo.nombres }}</h4>
-                            <h5>{{ socio.nombres }} </h5>
+                            <h5>{{ socio.nombres }} <span class="badge badge-info">{{ socio.parentesco }}</span></h5>
+                            <h4>{{ socio.socio_status }} </h4>
                             <span class="date">Identificación: {{ socio.dni }}</span><br />
-                            <span *ngIf="!socio.activo" class="text-danger">El socio no se encuentra activo y no puede realizar invitaciones</span>
-                            <button [disabled]="!socio.activo" class="btn btn-secondary btn-block mt-3" (click)="realizarInvitar()">Invitar</button>
+                            <span *ngIf="socio.socio_status !== 'HABILITADO'" class="text-danger">El socio no se encuentra activo y no puede realizar invitaciones</span>
+                            <button [disabled]="socio.socio_status !== 'HABILITADO'" class="btn btn-secondary btn-block mt-3" (click)="realizarInvitar()">Invitar</button>
                         </div>
                     </div>
                 </div>
@@ -98,6 +99,14 @@
             <div class="form-group">
                 <label>Nombre del Invitado</label>
                 <input [value]="user.nombres" [(ngModel)]="user.nombres" name="nombres" class="form-control" type="text" required>
+            </div>
+            <div class="form-group">
+                <label>Edad (Opcional)</label>
+                <input [value]="user.edad" [(ngModel)]="user.edad" name="edad" class="form-control" type="number">
+            </div>
+            <div class="form-group">
+                <label>Correo (Opcional)</label>
+                <input [value]="user.correo" [(ngModel)]="user.correo" name="correo" class="form-control" type="text">
             </div>
         </div>
         <div class="modal-footer">
