@@ -39,10 +39,11 @@ export class PrincipalComponent implements OnInit {
     const body = new FormData();
     body.append('texto', this.dni);
     const response = await this.requestServ.buscarSocio(body);
-    if (response[0]) {
-      this.socio = response[1];
+    if (response[0] && response[1].tipo.id_tipo === 1) {
+        this.socio = response[1];
     } else {
       this.socio = null;
+      Swal.fire('El número de cédula no es válido', 'Verifique nuevamente', 'info');
     }
   }
 
