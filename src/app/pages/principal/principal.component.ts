@@ -20,7 +20,8 @@ export class PrincipalComponent implements OnInit {
     dni: '',
     nombres: '',
     correo: '',
-    edad: ''
+    edad: '',
+    telefono: ''
   };
   fechaCaducidad: any;
   editarInvitacion = false;
@@ -36,6 +37,7 @@ export class PrincipalComponent implements OnInit {
   }
 
   async buscarSocio() {
+    this.dni = this.dni.trim();
     const body = new FormData();
     body.append('texto', this.dni);
     const response = await this.requestServ.buscarSocio(body);
@@ -87,7 +89,7 @@ export class PrincipalComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.value) {
-        this.user.dni = dni;
+        this.user.dni = dni.trim();
         this.modalService.open(this.content);
       }
     });
@@ -148,6 +150,7 @@ export class PrincipalComponent implements OnInit {
     body.append('nombres', this.user.nombres);
     body.append('edad', (this.user.edad) ? this.user.edad : '');
     body.append('correo', (this.user.correo) ? this.user.correo : '');
+    body.append('telefono', (this.user.telefono) ? this.user.telefono : '');
     const response = await this.requestServ.createUser(body);
     if (response[0]) {
       this.invitado = response[1];

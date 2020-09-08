@@ -2332,6 +2332,10 @@ File: scss
     padding-bottom: 60px;
 }
 
+html {
+    background: #eef5f9;
+}
+
 .container-fluid {
     padding: 0 30px 25px 30px;
 }
