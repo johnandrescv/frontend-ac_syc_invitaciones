@@ -101,20 +101,20 @@
                 <input [value]="user.nombres" [(ngModel)]="user.nombres" name="nombres" class="form-control" type="text" required>
             </div>
             <div class="form-group">
+                <label>Teléfono</label>
+                <input [value]="user.telefono" [(ngModel)]="user.telefono" name="telefono" class="form-control" type="text" required>
+            </div>
+            <div class="form-group">
                 <label>Edad (Opcional)</label>
                 <input [value]="user.edad" [(ngModel)]="user.edad" name="edad" class="form-control" type="number">
             </div>
             <div class="form-group">
                 <label>Correo (Opcional)</label>
-                <input [value]="user.correo" [(ngModel)]="user.correo" name="correo" class="form-control" type="text">
-            </div>
-            <div class="form-group">
-                <label>Teléfono (Opcional)</label>
-                <input [value]="user.telefono" [(ngModel)]="user.telefono" name="telefono" class="form-control" type="text">
+                <input [value]="user.correo" [(ngModel)]="user.correo" name="correo" class="form-control" type="text" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$">
             </div>
         </div>
         <div class="modal-footer">
-            <button *ngIf="!requestServ.loading" [disabled]="!form.valid" type="submit" class="btn btn-outline-dark">
+            <button *ngIf="!requestServ.loading" [disabled]="!form.valid" type="submit" class="btn btn-info">
                 <span>Crear</span>
             </button>
             <i *ngIf="requestServ.loading" class="fa fa-spinner fa-spin fa-2x"></i>
