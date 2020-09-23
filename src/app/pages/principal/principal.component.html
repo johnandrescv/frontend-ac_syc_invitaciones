@@ -50,7 +50,7 @@
                         <div class="card-body">
                             <div class="form-group d-flex justify-content-center mt-2" *ngIf="socio.imagen">
                                 <div class="image-preview">
-                                    <img class="img-fluid" [src]="socio.imagen" height="500" />
+                                    <img class="img-fluid" src="http://190.95.224.172:8888/api/uploads/image.php?nombre={{socio.dni}}.JPG" height="500" />
                                 </div>
                             </div>
                             <h4 class="text-info"><strong>Tipo:</strong> {{ socio.tipo.nombres }}</h4>
